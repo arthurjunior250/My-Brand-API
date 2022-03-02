@@ -13,7 +13,7 @@ server.get('/', (req, res) => {
 server.use(express.json());
 
 server.use('/api/v1/inquiries', inquiryRoutes);
-// server.use('/api/v1/blogs', blogRoutes);
+// server.use('/api/v1/blogs', blogRoutes);;
 
 const port = 3000;
 
