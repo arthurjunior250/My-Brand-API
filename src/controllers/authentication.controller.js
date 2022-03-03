@@ -1,13 +1,19 @@
 import User from '../database/model/user.model';
 import { hash, verify } from '../helpers/hash-password';
 import { decodeToken, signToken } from '../helpers/jwt';
+import emailVlidator from 'email-validator';
 
 export const signup = async(req, res) => {
-    let user = req.body;
-    user.password = await hash(user.password);
-    const newUser = await new User(user);
-    newUser.save();
-    res.status(201).json({ success: true, message: 'User created', data: newUser });
+
+    if (emailVlidator.validate(req.body.email)) {
+        let user = req.body;
+        user.password = await hash(user.password);
+        const newUser = await new User(user);
+        newUser.save();
+        res.status(201).json({ success: true, message: 'User created', data: newUser });
+    } else {
+        res.status(401).json({ success: false, message: "invalid email" });
+    }
 }
 
 export const login = async(req, res) => {
