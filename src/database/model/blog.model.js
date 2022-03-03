@@ -1,23 +1,23 @@
-// import mongoose from "mongoose";
+import mongoose from "mongoose";
 
-// const BlogSchema = new mongoose.Schema({
-//     image: {
-//         type: String,
-//         required: true
-//     },
-//     title: {
-//         type: String,
-//         required: true
-//     },
-//     content: {
-//         type: String,
-//         required: true
-//     },
-//     createdAt: {
-//         type: Date,
-//         default: new Date()
-//     }
-// });
+const blogSchema = new mongoose.Schema({
+    url: {
+        type: String,
+        required: true
+    },
+    title: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        default: new Date()
+    }
+});
 
-// const Blog = mongoose.model('Blog', BlogSchema);
-// export default Blog;
+const Blog = mongoose.model('Task', blogSchema);
+export default Blog;
