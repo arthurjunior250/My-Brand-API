@@ -1,7 +1,6 @@
 import "./database";
 import express from 'express';
 import inquiryRoutes from './routes/inquiry.route';
-// import blogRoutes from './routes/blog.route';
 import blogRoutes from './routes/blog.route';
 import authRoutes from './routes/authentication.route';
 
@@ -15,7 +14,6 @@ server.get('/', (req, res) => {
 server.use(express.json());
 
 server.use('/api/v1/inquiries', inquiryRoutes);
-// server.use('/api/v1/blogs', blogRoutes);;;
 server.use('/api/v1/blogs', blogRoutes);
 server.use('/api/v1/authentication', authRoutes);
 const port = 3000;
