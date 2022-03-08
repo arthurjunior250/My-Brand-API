@@ -16,6 +16,8 @@ server.use(express.json());
 server.use('/api/v1/inquiries', inquiryRoutes);
 server.use('/api/v1/blogs', blogRoutes);
 server.use('/api/v1/authentication', authRoutes);
-const port = 3000;
+
+
+const port = 4000;
 
 server.listen(port, () => { console.log("Server listening on port " + port) });
