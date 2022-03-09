@@ -38,9 +38,10 @@ export const login = async(req, res) => {
     const isPasswordValid = await verify(user.password, password);
     if (!isPasswordValid) return res.status(401).json({ status: "fail", message: "Invalid email or password" });
 
-    const { _id, firstName, lastName } = user;
-    const token = signToken(JSON.stringify({ _id, firstName, lastName, email: user.email }));
+    const { _id, firstName, lastName, role } = user;
+    const token = signToken(JSON.stringify({ _id, firstName, lastName, role, email: user.email }));
     return res.status(200).json({ status: "success", message: "successfully logged in", token })
+
 }
 
 export const userProfile = (req, res) => {

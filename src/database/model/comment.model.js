@@ -4,17 +4,22 @@ const commentSchema = new mongoose.Schema({
 
     names: {
         type: String,
-        required: 'Full Name is required'
+        required: true
     },
     email: {
         type: String,
-        required: 'Email is required'
+        required: true
     },
     comment: {
         type: String,
-        required: 'Comment is required'
-    }
+        required: true
+    },
+    blogPost: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Blog",
+    },
 
 })
 
-export default mongoose.model('comments', commentSchema)
+const Comment = mongoose.model('Comment', commentSchema);
+export default Comment;
