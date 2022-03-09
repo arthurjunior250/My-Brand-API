@@ -1,7 +1,7 @@
 import "./database";
 import express from 'express';
-import inquiryRoutes from './routes/inquiry.route';
-import blogRoutes from './routes/blog.route';
+import userRoutes from './routes/users.route';
+import adminRoutes from './routes/admin.route';
 import authRoutes from './routes/authentication.route';
 
 const server = express();
@@ -13,11 +13,11 @@ server.get('/', (req, res) => {
 
 server.use(express.json());
 
-server.use('/api/v1/inquiries', inquiryRoutes);
-server.use('/api/v1/blogs', blogRoutes);
+server.use('/api/v1/users', userRoutes);
+server.use('/api/v1/admin/', adminRoutes);
 server.use('/api/v1/authentication', authRoutes);
 
 
-const port = 4000;
+const port = 3000;
 
 server.listen(port, () => { console.log("Server listening on port " + port) });

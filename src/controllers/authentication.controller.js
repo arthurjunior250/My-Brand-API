@@ -23,7 +23,7 @@ export const signup = async(req, res) => {
         newUser.save();
         res
             .status(201)
-            .json({ status: "success", message: "User created", data: newUser });
+            .json({ status: "success", message: "User created" });
     } else {
         res.status(401).json({ status: "fail", message: "invalid email" });
     }

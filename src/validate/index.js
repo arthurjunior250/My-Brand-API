@@ -32,3 +32,12 @@ export const blogValidation = (data) => {
 
     return schema.validate(data);
 };
+// newsletter
+//blog validation
+export const newsletterValidation = (data) => {
+    const schema = Joi.object({
+        email: Joi.string().min(6).required().email(),
+    });
+
+    return schema.validate(data);
+};
