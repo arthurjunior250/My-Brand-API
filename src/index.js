@@ -8,7 +8,7 @@ const server = express();
 
 // default route
 server.get('/', (req, res) => {
-    res.status(200).json({ success: true, message: "You successfully landed on our My brand app API" })
+    res.status(200).json({ success: true, message: "You successfully landed on My brand app API" })
 });
 
 server.use(express.json());

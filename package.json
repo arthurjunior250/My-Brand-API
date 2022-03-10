@@ -12,6 +12,7 @@
     "license": "ISC",
     "dependencies": {
         "argon2": "^0.28.5",
+        "cloudinary": "^1.28.1",
         "cross-env": "^7.0.3",
         "dotenv": "^16.0.0",
         "email-validator": "^2.0.4",

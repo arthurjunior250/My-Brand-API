@@ -2,10 +2,11 @@ import Blog from '../database/model/blog.model';
 import { blogValidation } from "../validate/index";
 import Inquiry from '../database/model/inquiry.model';
 import newsLetters from '../database/model/newsletter.model';
+import { fileUpload } from "../helpers/file";
 
 //blogs
 
-export const saveBlog = async(req, res) => {
+export const saveBlog = async(req, res, next) => {
     const { error } = blogValidation(req.body);
     if (error) return res.status(400).json({ message: error.details[0].message });
     let oldblog = await Blog.findOne(req.body);
@@ -15,7 +16,18 @@ export const saveBlog = async(req, res) => {
             message: "blog Exists",
         });
     }
-    const blog = req.body;
+    //image
+    if (req.file) {
+        req.body.image = await fileUpload(req);
+    } else {
+        req.body.image =
+            "https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260";
+    }
+    const blog = {
+        image: req.body.image,
+        title: req.body.title,
+        description: req.body.description
+    };
     const newBlog = new Blog(blog);
     await newBlog.save();
     res.status(201).json({ status: "success", data: newBlog });
@@ -37,7 +49,7 @@ export const deleteBlogById = async(req, res) => {
     const blog = await Blog.findById(id);
     if (!blog) return res.status(404).json({ status: "fail", message: "Blog not found" });
     await Blog.findByIdAndDelete(id);
-    res.status(200).json({ status: "success", message: "Blog deleted", data: "Null" });
+    res.status(200).json({ status: "success", message: "Blog deleted" });
 }
 
 //query
