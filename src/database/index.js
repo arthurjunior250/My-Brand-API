@@ -11,6 +11,7 @@ mongoose.connect(db_url, {
     })
     .then(() => {
         console.log("App connected to Mongodb successfully")
+        console.log(db_url)
     })
     .catch((e) => {
         console.log("Mongodb connection error " + e.message);
