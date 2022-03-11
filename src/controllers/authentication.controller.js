@@ -1,6 +1,6 @@
 import User from '../database/model/user.model';
-import { hash, verify } from '../helpers/hash-password';
-import { decodeToken, signToken } from '../helpers/jwt';
+import { hash, verify } from '../middleware/hash-password';
+import { decodeToken, signToken } from '../middleware/jwt';
 import emailVlidator from 'email-validator';
 import { registerValidation } from "../validate/index";
 
