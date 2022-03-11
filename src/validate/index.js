@@ -26,7 +26,7 @@ export const registerValidation = (data) => {
 //blog validation
 export const blogValidation = (data) => {
     const schema = Joi.object({
-        image: Joi.string().min(4),
+        image: Joi.string(),
         title: Joi.string().min(4).required(),
         description: Joi.string().min(100).required(),
     });
