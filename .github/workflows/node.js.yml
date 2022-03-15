@@ -18,6 +18,12 @@ jobs:
       matrix:
         node-version: [12.x, 14.x, 16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        
+    env:
+      PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+      NODE_ENV: ${{ secrets.NODE_ENV }}
+      PORT: ${{ secrets.PORT }}
+      TESTING_DB_CONNECTION: ${{ secrets.DB_TESTING_URL }}
 
 
     steps:
