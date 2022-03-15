@@ -3,8 +3,12 @@ import { deleteComment, saveComment, getAllComments } from '../controllers/comme
 import { checkUser } from "../middleware/check";
 const router = express.Router();
 
-router.post("/:id", checkUser, saveComment);
+// router.post("/:id", checkUser, saveComment);
+// router.get("/:id", getAllComments);
+// router.delete("/:id", checkUser, deleteComment);
+
+router.post("/:id", saveComment);
 router.get("/:id", getAllComments);
-router.delete("/:id", checkUser, deleteComment);
+router.delete("/:id", deleteComment);
 
 export default router;
