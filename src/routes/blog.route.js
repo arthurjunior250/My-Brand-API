@@ -14,14 +14,9 @@ const fileFilter = (req, file, cb) => {
 };
 const uploads = multer({ storage, fileFilter });
 
-// router.post('/', checkAdmin, uploads.single("image"), saveBlog);
-// router.put('/:id', checkAdmin, updateBlog);
-// router.delete('/:id', checkAdmin, deleteBlogById);
-// router.get('/', getAllBlogs);
-// router.get('/:id', getblogById);
-router.post('/', uploads.single("image"), saveBlog);
-router.put('/:id', updateBlog);
-router.delete('/:id', deleteBlogById);
+router.post('/', checkAdmin, uploads.single("image"), saveBlog);
+router.put('/:id', checkAdmin, updateBlog);
+router.delete('/:id', checkAdmin, deleteBlogById);
 router.get('/', getAllBlogs);
 router.get('/:id', getblogById);
 
