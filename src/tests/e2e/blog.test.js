@@ -9,23 +9,24 @@ chai.use(chaiHttp);
 //sign up
 describe('POST API /api/v1/authentication/signup', () => {
     before(() => {
-        mongoose.connection.dropCollection('signup');
-    })
+        mongoose.connection.dropCollection("users");
+    });
     const user = {
-        userName: "arthur",
-        email: "arthurkigali1@gmail.com",
+        userName: "kigali",
+        email: "arthurkigali88@gmail.com",
         role: "admin",
-        password: "123456"
-    }
-    it('it should successfully create an account and return 201', (done) => {
-        chai.request(app)
-            .post('/api/v1/authentication/signup')
+        password: "password",
+    };
+    it("It should successfully create an account and return 201", (done) => {
+        chai
+            .request(app)
+            .post("/api/v1/authentication/signup")
             .send(user)
             .end((err, res) => {
-                if (err) return done(err)
-                expect(res.status).to.be.equal(400);
+                if (err) return done(err);
+                expect(res.status).to.be.equal(201);
                 return done();
-            })
+            });
     });
     it('Should return 400 when email exists', (done) => {
         const oldemail = user.email
@@ -45,8 +46,8 @@ describe('POST API /api/v1/authentication/signup', () => {
             mongoose.connection.dropCollection('login');
         })
         const user = {
-            email: "arthurkigali1@gmail.com",
-            password: "123456"
+            email: "arthurkigali88@gmail.com",
+            password: "password"
         }
         let token = "";
         it('it should successfully login and return 200', (done) => {
@@ -84,6 +85,18 @@ describe('POST API /api/v1/authentication/signup', () => {
                     expect(res.body).to.haveOwnProperty('data')
                     return done();
                 })
+            });
+            it('Should return 400 when blog exists', (done) => {
+                const oldeblog = blog;
+                chai.request(app).post('/api/v1/blog')
+                    .set("Authorization", `Bearer ${token}`)
+                    .send(blog)
+                    .end((err, res) => {
+                        if (oldeblog) return done(err);
+                        expect(res.status).to.be.eql(400)
+                        return done();
+                    })
+
             });
 
         });

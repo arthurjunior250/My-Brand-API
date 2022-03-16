@@ -2,14 +2,6 @@ import mongoose from 'mongoose'
 
 const commentSchema = new mongoose.Schema({
 
-    names: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true
-    },
     comment: {
         type: String,
         required: true
@@ -18,6 +10,10 @@ const commentSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Blog",
     },
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    }
 
 })
 

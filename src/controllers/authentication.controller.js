@@ -1,32 +1,28 @@
 import User from '../database/model/user.model';
 import { hash, verify } from '../middleware/hash-password';
 import { decodeToken, signToken } from '../middleware/jwt';
-import emailVlidator from 'email-validator';
+// import emailVlidator from 'email-validator';
 import { registerValidation } from "../validate/index";
 
 export const signup = async(req, res) => {
     const { error } = registerValidation(req.body);
     if (error) return res.status(400).json({ message: error.details[0].message });
-    if (emailVlidator.validate(req.body.email)) {
-        let user = await User.findOne({
-            email: req.body.email,
+    // if (emailVlidator.validate(req.body.email)) {
+    let user = await User.findOne({
+        email: req.body.email,
+    });
+    if (user) {
+        return res.status(400).json({
+            status: "fail",
+            message: "Email Exists",
         });
-        if (user) {
-            return res.status(400).json({
-                status: "fail",
-                message: "Email Exists",
-            });
-        }
-        user = req.body;
-        user.password = await hash(user.password);
-        const newUser = await new User(user);
-        newUser.save();
-        res
-            .status(201)
-            .json({ status: "success", message: "User created" });
-    } else {
-        res.status(401).json({ status: "fail", message: "invalid email" });
     }
+    user = req.body;
+    user.password = await hash(user.password);
+    const newUser = await new User(user);
+    newUser.save();
+    res.status(201).json({ status: "success", message: "User created" });
+    // }
 
 }
 

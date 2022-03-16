@@ -7,8 +7,6 @@ import commentRoutes from './routes/comment.route';
 import newsletterRoutes from './routes/newsletter.route';
 
 //swagger-ui
-import cors from "cors";
-import morgan from "morgan";
 import swaggerUi from "swagger-ui-express";
 import swaggerDoc from "../api.json";
 
@@ -25,13 +23,10 @@ server.use('/api/v1/inquiry', inquiryRoutes);
 server.use('/api/v1/blog', blogRoutes);
 server.use('/api/v1/authentication', authRoutes);
 server.use('/api/v1/newsletter', newsletterRoutes);
-server.use('/api/v1/comment', commentRoutes);
+server.use('/api/v1/blog', commentRoutes);
 
 export default server;
-
-server.use(cors());
-server.use(morgan("dev"));
-server.use("/api/v1/", authRoutes);
+// swagger-ui
 server.use(
     "/api-docs",
     swaggerUi.serve,

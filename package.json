@@ -4,9 +4,9 @@
     "description": "my brand rest API",
     "main": "index.js",
     "scripts": {
-        "start:dev": "cross-env NODE_ENV=development nodemon --exec babel-node src/index.js",
-        "start": "cross-env NODE_ENV=production babel-node src/index.js",
-        "test": "cross-env NODE_ENV=development nyc mocha --require @babel/register ./src/tests/ --recursive  --exit --timeout 30000",
+        "start:dev": "cross-env NODE_ENV=dev nodemon --exec babel-node src/index.js",
+        "start": "cross-env NODE_ENV=prod babel-node src/index.js",
+        "test": "cross-env NODE_ENV=dev nyc mocha --require @babel/register ./src/tests/ --recursive  --exit --timeout 30000",
         "build": "babel src --out-dir dist"
     },
     "author": "arthurjunior88741@gmail.com",

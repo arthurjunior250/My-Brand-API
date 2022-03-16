@@ -8,10 +8,9 @@ export const saveComment = async(req, res) => {
     if (error) return res.status(400).json({ message: error.details[0].message });
 
     const newComment = await Comment.create({
-        names: req.body.names,
-        email: req.body.email,
         comment: req.body.comment,
         blogPost: blogId,
+        owner: req.currentUser._id,
     });
     const blogPost = await Blog.findById(blogId);
     blogPost.comments.push(newComment);

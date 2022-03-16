@@ -18,7 +18,10 @@ export const checkUser = (req, res, next) => {
     if (bearerToken) {
         const token = bearerToken.split(" ")[1];
         const payload = decodeToken(token);
-        if (payload.role == "standard-user") return next();
+        if (payload.role == "standard-user") {
+            req.currentUser = payload;
+            return next();
+        }
         return res.status(401).json({ status: "fail", message: "you are not allowed to access this service" });
     }
     return res

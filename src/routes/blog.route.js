@@ -2,6 +2,7 @@ import express from 'express';
 import { deleteBlogById, saveBlog, updateBlog, getAllBlogs, getblogById } from '../controllers/blog.controller';
 import { checkAdmin } from "../middleware/check";
 const router = express.Router();
+
 //image
 import multer from "multer";
 const storage = multer.diskStorage({});
