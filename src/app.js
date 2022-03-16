@@ -5,13 +5,14 @@ import blogRoutes from './routes/blog.route';
 import authRoutes from './routes/authentication.route';
 import commentRoutes from './routes/comment.route';
 import newsletterRoutes from './routes/newsletter.route';
+import cors from "cors";
 
 //swagger-ui
 import swaggerUi from "swagger-ui-express";
 import swaggerDoc from "../api.json";
 
 const server = express();
-
+server.use(cors());
 // default route
 server.get('/', (req, res) => {
     res.status(200).json({ success: true, message: "You successfully landed on My brand app API" })
