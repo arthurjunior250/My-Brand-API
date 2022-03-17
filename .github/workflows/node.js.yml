@@ -23,7 +23,7 @@ jobs:
       PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
       NODE_ENV: ${{ secrets.NODE_ENV }}
       PORT: ${{ secrets.PORT }}
-      TESTING_DB_CONNECTION: ${{ secrets.DB_TESTING_URL }}
+      DB_TESTING_URL: ${{ secrets.DB_TESTING_URL }}
 
 
     steps:
