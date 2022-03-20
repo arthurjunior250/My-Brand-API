@@ -119,5 +119,18 @@ describe('POST API /api/v1/authentication/login', () => {
                         })
                 })
         });
+        describe('GET API /api/v1/authentication', () => {
+         
+            it('Should get the list of users', (done) => {
+                        chai.request(app).get('/api/v1/authentication')
+                        .set("Authorization", `Bearer ${token}`)
+                            .end((err, res) => {
+                                if (err) return done(err);
+                                expect(res.status).to.be.eql(200)
+                                return done();
+                            })
+                    })
+            });
+       
     })
 });
