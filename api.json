@@ -135,7 +135,7 @@
                 "description": "get all queries",
                 "operationId": "get all queries",
                 "responses": {
-                    "201": {
+                    "200": {
                         "description": "Get all queries"
                     }
                 },
@@ -355,7 +355,122 @@
                     }
                 }
             }
-        }
+        },
+        "/api/v1/blog/comment/{id}": {
+			"get": {
+				"tags": ["Comment"],
+				"summary": "Get Single comment",
+				"description": "get single comment",
+				"operationId": "get single comment",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"type": "string",
+						"description": "Comment Id",
+						"required": true
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "get comment by id"
+					}
+				}
+			},
+			"delete": {
+				"tags": ["Comment"],
+				"summary": "Delete comment",
+				"description": "delete comment",
+				"operationId": "delete comment",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"type": "string",
+						"description": "Comment Id",
+						"required": true
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "comment deleted"
+					}
+				}
+			}
+		},
+
+        "/api/v1/blog/{id}/comment": {
+			"get": {
+				"tags": ["Comment"],
+				"summary": "Get All comment",
+				"description": "get sall comment",
+				"operationId": "get all comment",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"produces": ["application/json"],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"type": "string",
+						"description": "blog id",
+						"required": true
+					}
+				],
+				"responses": {
+					"201": {
+						"description": "get all comment"
+					}
+				}
+			},
+			"post": {
+				"tags": ["Comment"],
+				"summary": "create comment",
+				"description": "create comment",
+				"operationId": "create comment",
+				"security": [
+					{
+						"Bearer": []
+					}
+				],
+				"produces": ["application/json"],
+                "parameters": [{
+                    "in": "body",
+                    "name": "body",
+                    "description": "Resource payload",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "comment": {
+                                "type": "string"
+                            }
+                        },
+                        "required": ["comment"]
+                    }
+                }],
+				"responses": {
+					"201": {
+						"description": "comment created"
+					}
+				}
+			}
+		}
 
 
     }

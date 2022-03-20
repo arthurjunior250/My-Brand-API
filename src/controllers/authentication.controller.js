@@ -44,3 +44,16 @@ export const userProfile = (req, res) => {
     const payload = decodeToken(token);
     return res.status(200).json({ status: true, data: payload });
 }
+
+export const getAllusers = async(req, res) => {
+    const users = await User.find();
+    res.status(200).json({ status: true, data: users })
+}
+
+export const deleteuserById = async(req, res) => {
+    const { id } = req.params;
+    const user = await User.findById(id);
+    if (!user) return res.status(404).json({ status: "fail", message: "user not found" });
+    await User.findByIdAndDelete(id);
+    res.status(200).json({ status: "success", message: "user deleted" });
+}

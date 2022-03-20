@@ -27,7 +27,7 @@ export const getAllComments = async(req, res) => {
 
 export const deleteComment = async(req, res) => {
     const { id } = req.params;
-    const comment = await Blog.findById(id);
+    const comment = await Comment.findById(id);
     if (!comment)
         return res
             .status(204)
@@ -36,4 +36,16 @@ export const deleteComment = async(req, res) => {
     res
         .status(201)
         .json({ status: "success", message: "Comment deleted", data: comment });
+};
+
+export const getSingleComment = async (req, res) => {
+	const { id } = req.params;
+	const comment = await Comment.findById(id);
+	if (!comment)
+		return res
+			.status(204)
+			.json({ status: false, message: "Comment not found" });
+	res
+		.status(201)
+		.json({ status: "success", message: "Comment found", data: comment });
 };
