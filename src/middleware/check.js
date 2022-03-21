@@ -5,7 +5,7 @@ export const checkAdmin = (req, res, next) => {
     if (bearerToken) {
         const token = bearerToken.split(" ")[1];
         const payload = decodeToken(token);
-        if (payload.role == "admin") return next();
+        if (payload?.role == "admin") return next();
         return res.status(401).json({ status: "fail", message: "you are not allowed to access this service" });
     }
     return res
@@ -18,7 +18,7 @@ export const checkUser = (req, res, next) => {
     if (bearerToken) {
         const token = bearerToken.split(" ")[1];
         const payload = decodeToken(token);
-        if (payload.role == "standard-user") {
+        if (payload?.role == "standard-user") {
             req.currentUser = payload;
             return next();
         }
