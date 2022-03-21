@@ -12,12 +12,8 @@ import swaggerUi from "swagger-ui-express";
 import swaggerDoc from "../api.json";
 
 const server = express();
-const corsOptions ={
-    origin:'*', 
-    credentials:true,       
-    optionSuccessStatus:200,
- }
-server.use(cors(corsOptions));
+
+server.use(cors());
 // default route
 server.get('/', (req, res) => {
     res.status(200).json({ success: true, message: "You successfully landed on My brand app API" })
