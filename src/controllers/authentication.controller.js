@@ -1,13 +1,11 @@
 import User from '../database/model/user.model';
 import { hash, verify } from '../middleware/hash-password';
 import { decodeToken, signToken } from '../middleware/jwt';
-// import emailVlidator from 'email-validator';
 import { registerValidation } from "../validate/index";
 
 export const signup = async(req, res) => {
     const { error } = registerValidation(req.body);
     if (error) return res.status(400).json({ message: error.details[0].message });
-    // if (emailVlidator.validate(req.body.email)) {
     let user = await User.findOne({
         email: req.body.email,
     });
