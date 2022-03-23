@@ -19,7 +19,7 @@ export const saveBlog = async(req, res, next) => {
         req.body.image = await fileUpload(req);
     } else {
         req.body.image =
-            "https://images.pexels.com/photos/1072179/pexels-photo-1072179.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260";
+            "https://www.linkpicture.com/q/blog_4.png";
     }
     const blog = {
         image: req.body.image,
