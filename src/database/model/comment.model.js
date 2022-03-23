@@ -10,6 +10,10 @@ const commentSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Blog",
     },
+    createdAt: {
+        type: Date,
+        default: new Date()
+    },
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
