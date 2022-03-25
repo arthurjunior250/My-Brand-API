@@ -25,5 +25,5 @@ $ yarn start:dev
 or
 $ npm run start:dev
 ```
-
+# check-code-coverage [![ci status][ci image]][ci url] ![check-code-coverage](https://img.shields.io/badge/code--coverage-100%25-brightgreen)
 
