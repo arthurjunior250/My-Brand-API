@@ -19,6 +19,8 @@ jobs:
         node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
         
+        - name: Check coverage change from README 📫
+        run: node bin/set-gh-status --check-against-readme  
     env:
       PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
       NODE_ENV: ${{ secrets.NODE_ENV }}
