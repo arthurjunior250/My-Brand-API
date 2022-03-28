@@ -6,7 +6,7 @@
     "scripts": {
         "start:dev": "cross-env NODE_ENV=dev nodemon --exec babel-node src/index.js",
         "start": "cross-env NODE_ENV=prod babel-node src/index.js",
-        "test": "cross-env NODE_ENV=test nyc mocha --require @babel/register ./src/tests/ --recursive  --exit --timeout 100000",
+        "test": "cross-env NODE_ENV=dev nyc mocha --require @babel/register ./src/tests/ --recursive  --exit --timeout 100000",
         "build": "babel src --out-dir dist"
     },
     "author": "arthurjunior88741@gmail.com",

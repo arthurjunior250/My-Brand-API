@@ -21,11 +21,9 @@ export const saveComment = async(req, res) => {
 
 export const getAllComments = async(req, res) => {
     const blogId = req.params.id;
-    // const getComment = await Blog.findById(blogId).populate("comments");
     const getAllComment = await Comment.find({ blogPost: blogId }).populate(
 		"owner"
 	);
-    // res.status(200).json({ status: "success", data: getComment.comments });
     res.status(200).json({ status: "success", data:getAllComment});
 };
 

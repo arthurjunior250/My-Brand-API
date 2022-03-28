@@ -5,6 +5,9 @@ const UserSchema = mongoose.Schema({
         type: String,
         require: true
     },
+    profilePicture: { 
+        type: String
+    },
     email: {
         type: String,
         required: true,

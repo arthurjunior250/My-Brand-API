@@ -285,8 +285,55 @@
                         "description": "Blog Deleted"
                     }
                 }
+            },
+       "put": {
+            "tags": ["Blogs"],
+            "summary": "Update Blog",
+            "description": "Update Blog",
+            "operationId": "Update Blog",
+            "security": [
+                {
+                    "Bearer": []
+                }
+            ],
+            "produces": ["application/json"],
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "type": "string",
+                    "description": "Blog Id",
+                    "required": true
+                },
+                {
+                    "in": "body",
+                    "name": "body",
+                    "description": "update blog",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                        "properties": {
+                            "image": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "description": {
+                                "type": "string"
+                            }
+                        },
+                        "required": ["image", "title", "description"]
+                    }
+                }
+            ],
+            "responses": {
+                "201": {
+                    "description": "success"
+                }
             }
-        },
+        }
+    },
         "/api/v1/newsletter": {
             "get": {
                 "tags": ["newsletter"],

@@ -1,6 +1,6 @@
 import express from 'express';
 import { deleteComment, saveComment, getAllComments,getSingleComment } from '../controllers/comment.controller';
-import { checkUser, checkAdmin } from "../middleware/check";
+import { checkUser } from "../middleware/check";
 const router = express.Router();
 
 router.post("/:id/comment", checkUser, saveComment);
