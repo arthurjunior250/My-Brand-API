@@ -64,3 +64,11 @@ export const deleteuserById = async(req, res) => {
     await User.findByIdAndDelete(id);
     res.status(200).json({ status: "success", message: "user deleted" });
 }
+export const updateProfile = async (req, res) => {
+    const { id } = req.params;
+    const updates = req.body;
+    const user = await User.findById(id);
+    if (!user) return res.status(404).json({ status: "fail", message: "User not found" });
+    await User.findByIdAndUpdate(id, updates);
+	return res.status(200).json({status:"success",message: "User updated successfully",});
+};
