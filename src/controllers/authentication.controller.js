@@ -50,7 +50,7 @@ export const userProfile = (req, res) => {
     const bearerToken = req.headers.authorization;
     const token = bearerToken.split(" ")[1];
     const payload = decodeToken(token);
-    return res.status(200).json({ status: true, });
+    return res.status(200).json({ status: true, data:payload });
 }
 
 export const getAllusers = async(req, res) => {
@@ -71,5 +71,5 @@ export const updateProfile = async (req, res) => {
     const user = await User.findById(id);
     if (!user) return res.status(404).json({ status: "fail", message: "User not found" });
     await User.findByIdAndUpdate(id, updates);
-	return res.status(200).json({status:"success",message: "User updated successfully",});
+	return res.status(200).json({status:"success",message: "User updated successfully",data:updates});
 };
