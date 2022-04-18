@@ -32,15 +32,16 @@ export const login = async(req, res) => {
     const isPasswordValid = await verify(user.password, password);
     if (!isPasswordValid) return res.status(401).json({ status: "fail", message: "Invalid email or password" });
 
-    const { _id, userName, role } = user;
+    const { _id, userName, role,profilePicture } = user;
     const userData = {
 		userName: user.userName,
 		role: user.role,
 		email: user.email,
+        profilePicture:user.profilePicture,
 		createdAt: user.createdAt,
 		_id: user._id,
 	};
-    const token = signToken(JSON.stringify({ _id,userName:user.userName, role, email: user.email }));
+    const token = signToken(JSON.stringify({ _id,userName, role, email: user.email,profilePicture }));
     return res.status(200).json({ status: "success", message: "successfully logged in", data:userData, token })
 
 }
@@ -49,7 +50,7 @@ export const userProfile = (req, res) => {
     const bearerToken = req.headers.authorization;
     const token = bearerToken.split(" ")[1];
     const payload = decodeToken(token);
-    return res.status(200).json({ status: true, data: payload });
+    return res.status(200).json({ status: true, });
 }
 
 export const getAllusers = async(req, res) => {
