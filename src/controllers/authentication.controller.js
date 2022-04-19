@@ -50,12 +50,12 @@ export const userProfile = (req, res) => {
     const bearerToken = req.headers.authorization;
     const token = bearerToken.split(" ")[1];
     const payload = decodeToken(token);
-    return res.status(200).json({ status: true, data:payload });
+    return res.status(200).json({ status: "success", data:payload });
 }
 
 export const getAllusers = async(req, res) => {
     const users = await User.find();
-    res.status(200).json({ status: true, data: users })
+    res.status(200).json({ status: "success", data: users })
 }
 
 export const deleteuserById = async(req, res) => {
