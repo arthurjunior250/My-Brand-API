@@ -22,7 +22,7 @@ export const checkUser = (req, res, next) => {
             req.currentUser = payload;
             return next();
         }
-        return res.status(401).json({ status: "fail", message: "you are not allowed to access this service" });
+        return res.status(401).json({ status: "fail", message: "You are not allowed to access this service" });
     }
     return res
         .status(401)
