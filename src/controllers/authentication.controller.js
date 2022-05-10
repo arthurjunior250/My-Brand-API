@@ -20,7 +20,7 @@ export const signup = async(req, res) => {
     const newUser = await new User(user);
     newUser.save();
     res.status(201).json({ status: "success", message: "User created" });
-    // }
+    
 
 }
 
@@ -61,9 +61,9 @@ export const getAllusers = async(req, res) => {
 export const deleteuserById = async(req, res) => {
     const { id } = req.params;
     const user = await User.findById(id);
-    if (!user) return res.status(404).json({ status: "fail", message: "user not found" });
+    if (!user) return res.status(404).json({ status: "fail", message: "User not Found" });
     await User.findByIdAndDelete(id);
-    res.status(200).json({ status: "success", message: "user deleted" });
+    res.status(200).json({ status: "success", message: "User Deleted" });
 }
 export const updateProfile = async (req, res) => {
     const { id } = req.params;
@@ -71,5 +71,5 @@ export const updateProfile = async (req, res) => {
     const user = await User.findById(id);
     if (!user) return res.status(404).json({ status: "fail", message: "User not found" });
     await User.findByIdAndUpdate(id, updates);
-	return res.status(200).json({status:"success",message: "User updated successfully",data:updates});
+	return res.status(200).json({status:"success",message: "User Updated successfully",data:updates});
 };
