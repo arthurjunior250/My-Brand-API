@@ -20,7 +20,7 @@ export const signup = async(req, res) => {
     const newUser = await new User(user);
     newUser.save();
     res.status(201).json({ status: "success", message: "User created" });
-    // }
+    
 
 }
 
