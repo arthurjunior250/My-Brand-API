@@ -29,6 +29,9 @@ jobs:
     - name: Install
       run: npm install -f
     - name: Test
-      run: npm test
+      run: npm run coverage
+       uses: paambaati/codeclimate-action@v2.5.7
+        env:
+      CC_TEST_REPORTER_ID: 9161c1dbc68f255eef8bb7fee342f5a4477b54804f9b91eb380d6c574a26ab34
 
     
