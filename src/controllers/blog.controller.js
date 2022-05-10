@@ -53,7 +53,7 @@ export const deleteBlogById = async(req, res) => {
 export const getblogById = async(req, res) => {
     const { id } = req.params;
     const blog = await Blog.findById(id);
-    if (!blog) return res.status(404).json({ status: "fail", message: "Blog not found" });
+    if (!blog) return res.status(404).json({ status: "fail", message: "Blog not Found" });
     res.status(200).json({ status: true, data: blog });
 }
 export const getAllBlogs = async(req, res) => {
