@@ -60,3 +60,5 @@ export const getAllBlogs = async(req, res) => {
     const blogs = await Blog.find();
     res.status(200).json({ status: true, data: blogs })
 }
+
+//blog
