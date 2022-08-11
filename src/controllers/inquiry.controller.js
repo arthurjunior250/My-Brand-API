@@ -11,9 +11,9 @@ export const saveInquiry = async(req, res) => {
         if (newInquiry) {
           const message = `
             <h2>Your mesaage is </h2>
-            <p><span>Names:</span>${req.body.names}</p>
-            <p><span>Email:</span>${req.body.email}</p>
-            <p><span>Message:</span>${req.body.message}</p>
+            <p><span>Names: </span>${req.body.names}</p>
+            <p><span>Email: </span>${req.body.email}</p>
+            <p><span>Message: </span>${req.body.message}</p>
             `;
           sendEmail(message);
         }
