@@ -56,6 +56,7 @@ export const userProfile = (req, res) => {
 export const getAllusers = async(req, res) => {
     const users = await User.find();
     res.status(200).json({ status: "success", data: users })
+    
 }
 
 export const deleteuserById = async(req, res) => {

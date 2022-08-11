@@ -1,5 +1,6 @@
 import Inquiry from '../database/model/inquiry.model';
 import { queryValidation } from "../validate/index";
+import sendEmail from '../middleware/sendEmail';
 
 export const saveInquiry = async(req, res) => {
     const { error } = queryValidation(req.body);
@@ -7,6 +8,15 @@ export const saveInquiry = async(req, res) => {
     const inquiry = req.body;
     const newInquiry = new Inquiry(inquiry);
     await newInquiry.save();
+        if (newInquiry) {
+          const message = `
+            <h2>Your mesaage is </h2>
+            <p><span>Names:</span>${req.body.names}</p>
+            <p><span>Email:</span>${req.body.email}</p>
+            <p><span>Message:</span>${req.body.message}</p>
+            `;
+          sendEmail(message);
+        }
     res.status(201).json({ status: "success", data: newInquiry });
 }
 export const getAllInquiries = async(req, res) => {
